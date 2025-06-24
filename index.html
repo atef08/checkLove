@@ -48,10 +48,14 @@
       z-index: 1;
     }
 
-    #noBtn {
-  position: absolute;
-  top: 0;
-  left: 0;
+#noBtn {
+  background-color: #ff6b6b;
+  color: white;
+  position: fixed; /* 🔁 Use fixed instead of absolute */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* center it initially */
+  z-index: 10;
 }
 
     #finalMessage {
@@ -115,19 +119,31 @@
     const question = document.getElementById('question');
     const initialImg = document.getElementById('initialImage');
 
-    noBtn.addEventListener('mouseenter', () => {
-      const btnWidth = noBtn.offsetWidth;
-      const btnHeight = noBtn.offsetHeight;
-    
-      const maxX = window.innerWidth - btnWidth;
-      const maxY = window.innerHeight - btnHeight;
-    
-      const x = Math.floor(Math.random() * maxX);
-      const y = Math.floor(Math.random() * maxY);
-    
-      noBtn.style.left = `${x}px`;
-      noBtn.style.top = `${y}px`;
-    });
+   noBtn.addEventListener('mouseenter', () => {
+  const btnWidth = noBtn.offsetWidth;
+  const btnHeight = noBtn.offsetHeight;
+
+  const maxX = window.innerWidth - btnWidth;
+  const maxY = window.innerHeight - btnHeight;
+
+  const x = Math.floor(Math.random() * maxX);
+  const y = Math.floor(Math.random() * maxY);
+
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
+});
+
+noBtn.addEventListener('click', () => {
+  // Move just like hover
+  const btnWidth = noBtn.offsetWidth;
+  const btnHeight = noBtn.offsetHeight;
+  const maxX = window.innerWidth - btnWidth;
+  const maxY = window.innerHeight - btnHeight;
+  const x = Math.floor(Math.random() * maxX);
+  const y = Math.floor(Math.random() * maxY);
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
+});
 
 
 
